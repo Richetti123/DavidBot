@@ -2,10 +2,10 @@ let handler = async (m, { conn, text, participants, args, command }) => {
   if (command == 'tagall' || command == 'invocar' || command == 'todos' || command == 'invocación' || command == 'invocacion') {
     let mensaje = args.join` `;
     let encabezado = `Respondan en cuanto puedan ${mensaje}`;
-    let texto = `ETIQUETA GENERAL ⚡\n📢 ¡Atención, equipo!\nEl bot ha activado la etiqueta general 🔔\nPrepárense para las nuevas actualizaciones, anuncios y misiones del grupo 💬\n\n${encabezado}\n\n`;
+    let texto = `ETIQUETA GENERAL ⚡\n\n${encabezado}\n\n`;
 
     for (let mem of participants) {
-      texto += `📲🤖 @${mem.id.split('@')[0]}\n`;
+      texto += `📲 @${mem.id.split('@')[0]}\n`;
     }
     texto += `${global.packname}`;
     conn.sendMessage(m.chat, { text: texto, mentions: participants.map(a => a.id) });
